@@ -1,0 +1,26 @@
+@import url(imput.css);
+@import url(lista.css);
+@import url(footer.css);
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --cor1: #8a8a8a;
+    --cinza-claro: #F9F9F9;
+    --coral: #F55B64;
+    --ocre: #c2373f;
+    --marinho: #131730;
+    --degrade: linear-gradient(to right, #0000FF, #87CEEB);
+    --font-1: "Krona One", sans-serif;
+    --font-2: "Montserrat", sans-serif;
+}
+body{
+    background: var(--degrade);
+    font-family: var(--font-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+h1{
+    width: 0%;
+    height: 0%;
+}

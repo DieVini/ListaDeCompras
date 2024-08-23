@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de compras</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header> 
+        <h1>Minha lista de compras</h1>
+    </header>
+    <main>
+        <section class="adicionar"> <!--area para adicionar itens-->
+            <img class= "adicionar_img" src="assets/paper bag with groceries 1.svg" alt="sacola cheia de compras">        
+            <input class="adicionar_compras"type="text" placeholder="Digite o item que deseja adicionar">
+            <a class="adicionar_botao" href="#"> Salvar Item</a>
+        </section>
+        <section class="itens"> <!--itens para comprar-->
+            <h2 class="itens_titulo">Lista de Compras</h2>
+            <hr class="linha_pontilhada">
+            <div class="itens_compras">
+                <div class="itens_compras_conteudo">
+                    <div class="itens_compras_conteudo">
+                        <input class="itens_checkbox" type="checkbox" id="meuCheckbox" name="meuCheckbox">
+                        <h3 class="itens_compras_titulo">Queijo Minas</h3>
+                    </div>
+                    <div class="itens_edicao">
+                        <a href="#"><img src="./assets/Excluir.svg" alt="imagem de lixeira para excluir itens"></a>
+                        <a href="#"><img src="./assets/Edição.svg" alt="imagem de um lapis para editar itens"></a>
+                    </div>
+                </div>
+                <p class="itens_texto">Segunda feira (31/10/2022) às 08:30</p>
+                <div class="itens_compras_conteudo">
+                    <div class="itens_compras_conteudo">
+                        <input class="itens_checkbox" type="checkbox" id="meuCheckbox" name="meuCheckbox">
+                        <h3 class="itens_compras_titulo">Leite integral</h3>
+                    </div>
+                    <div class="itens_edicao">
+                        <a href="#"><img src="./assets/Excluir.svg" alt="imagem de lixeira para excluir itens"></a>
+                        <a href="#"><img src="./assets/Edição.svg" alt="imagem de um lapis para editar itens"></a>
+                    </div>
+                </div>
+                <p class="itens_texto">Segunda feira (31/10/2022) às 08:30</p>
+                <div class="itens_compras_conteudo">
+                    <div class="itens_compras_conteudo">
+                        <input class="itens_checkbox" type="checkbox" id="meuCheckbox" name="meuCheckbox">
+                        <h3 class="itens_compras_titulo">Mamao papaia</h3>
+                    </div>
+                    <div class="itens_edicao">
+                        <a href="#"><img src="./assets/Excluir.svg" alt="imagem de lixeira para excluir itens"></a>
+                        <a href="#"><img src="./assets/Edição.svg" alt="imagem de um lapis para editar itens"></a>
+                    </div>
+                </div>
+                <p class="itens_texto">Segunda feira (31/10/2022) às 08:30</p>
+            </div>
+        </section>
+        <section class="itens"> <!--itens para comprar-->
+            <h2 class="itens_titulo">Comprado</h2>
+            <hr class="linha_pontilhada">
+            <div class="itens_compras">
+                <div class="itens_compras_conteudo">
+                    <div class="itens_compras_conteudo">
+                        <input class="itens_checkbox" type="checkbox" id="meuCheckbox" name="meuCheckbox">
+                        <h3 class="itens_compras_titulo"><s>Esponja de louça</s></h3>
+                    </div>
+                    <div class="itens_edicao">
+                        <a href="#"><img src="./assets/Excluir.svg" alt="imagem de lixeira para excluir itens"></a>
+                        <a href="#"><img src="./assets/Edição.svg" alt="imagem de um lapis para editar itens"></a>
+                    </div>
+                </div>
+                <p class="itens_texto">Segunda feira (31/10/2022) às 08:30</p>
+                <div class="itens_compras_conteudo">
+                    <div class="itens_compras_conteudo">
+                        <input class="itens_checkbox" type="checkbox" id="meuCheckbox" name="meuCheckbox">
+                        <h3 class="itens_compras_titulo"><s>Cacau em pó</s></h3>
+                    </div>
+                    <div class="itens_edicao">
+                        <a href="#"><img src="./assets/Excluir.svg" alt="imagem de lixeira para excluir itens"></a>
+                        <a href="#"><img src="./assets/Edição.svg" alt="imagem de um lapis para editar itens"></a>
+                    </div>
+                </div>
+                <p class="itens_texto">Segunda feira (31/10/2022) às 08:30</p>
+            </div>
+        </section>
+    </main>
+    <footer class="rodape">
+        <p>Desenvolvido por Diego Vinicius. Projeto para estudo sem fins financeiros</p>
+    </footer>
+</body>
+</html>

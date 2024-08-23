@@ -1,0 +1,44 @@
+.itens{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    gap: 0.5em;
+    margin: 1.5em 0 0 0;
+}
+.linha_pontilhada{
+    position: relative;
+    width: 100%; /* Ou ajuste a largura conforme necessário */
+    border-top: 0.125em dotted var(--coral); /* Cria a linha pontilhada */
+}
+
+.itens_compras{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.itens_compras_conteudo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
+.itens_titulo{
+    font-size: 1.125rem;
+    color: var(--coral);
+    font-family: var(--font-1);
+    font-weight: 400;
+}
+
+.itens_compras_titulo{
+    font-size: 1rem;
+    color: var(--marinho);
+    font-family: var(--font-2);
+    font-weight: 400;
+}
+.itens_texto{
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--marinho);
+    font-family: var(--font-2);
+}
