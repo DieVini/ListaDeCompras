@@ -21,6 +21,5 @@ body{
     font-weight: 400;
 }
 h1{
-    width: 0%;
-    height: 0%;
+    font-size: 0;
 }
