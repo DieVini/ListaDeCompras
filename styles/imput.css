@@ -16,7 +16,7 @@ main{
     width: 19.188em;
     padding: 1em;
     border-radius: 1.5em;
-    border: 1px solid var(--cor1);
+    border: 1px solid;
     color: var(--marinho);
     font-size: 1rem;
     font-weight: 400;
@@ -35,8 +35,14 @@ main{
     background-position: 1em;
 }
 
+.adicionar_compras:focus{
+    border-color: var(--coral);
+    outline: none; /*remove a sombra de focu padrão do navegador*/
+}
+
 .adicionar_botao{
     text-align: center;
+    border: 0.13em solid;
     font-size: 1rem;
     border-radius: 1.5em;
     font-weight: 700;
@@ -47,3 +53,18 @@ main{
     background-color: var(--coral);
 }
 
+.adicionar_botao:hover{
+    background-color: var(--ocre);
+}
+
+.adicionar_botao:focus{
+    background-color: var(--cinza-claro);
+    border-color: var(--ocre);
+    color: var(--ocre);
+}
+
+.adicionar_botao:active{
+    background-color: var(--cinza-claro);
+    border-color: var(--coral);
+    color: var(--coral);
+}
