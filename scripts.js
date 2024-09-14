@@ -1,57 +1,89 @@
-//console.log("hello world");
+//console.log("hello world");3
 const compras = document.getElementById("adicionar_compras"); //input para adicionar as compras.
 const salvar = document.getElementById("adicionar_botao");
-salvar.addEventListener("click", clicar);
+const listaDeCompras = document.getElementById("itens_compras");
+const listaComprados = document.getElementById("itens_comprados")
+let contador = 0;
+salvar.addEventListener("click", adicionarItem); //onclick
 
-function clicar(evento){
-    evento.preventDefault()
-    console.log("entrei na funcao");
+
+function adicionarItem(evento){
+    evento.preventDefault(); //evitar refresh na página quando clicar no botão
+    const item = compras.value.trim(); 
+
     const lista = document.createElement("li");
-
     const listaComprasConteudo = document.createElement("div");
     listaComprasConteudo.classList.add("itens_compras_conteudo");
-    listaComprasConteudo.appendChild(lista); //adicionar dentro da div respectiva
-
-    const itensCheckbox = document.createElement("div");
-    itensCheckbox.classList.add("itens_checkbox");
-    itensCheckbox.appendChild(listaComprasConteudo);
+    lista.appendChild(listaComprasConteudo); //adicionar dentro da div respectiva
+    
+    const comprasAdicionadas = document.createElement("div"); //div que engloba checkbox e nome do item adicionado
+    comprasAdicionadas.classList.add("itens_compras_conteudo");
+    listaComprasConteudo.appendChild(comprasAdicionadas);
 
     const Checkbox = document.createElement("input");
+    Checkbox.type = "checkbox";
     Checkbox.classList.add("input_checkbox");
-    Checkbox.appendChild(itensCheckbox);
+    Checkbox.id = "checkbox-" + contador++; 
 
-    const CheckboxCustomizado = document.createElement("div");
-    CheckboxCustomizado.classList.add("checkbox_customizado checked");
-    CheckboxCustomizado.appendChild(itensCheckbox);
+    const itensCheckbox = document.createElement("label"); //inicio do macete para checkbox customizado
+    itensCheckbox.setAttribute("for", Checkbox.id) 
+    comprasAdicionadas.appendChild(itensCheckbox);
+    itensCheckbox.appendChild(Checkbox);
+
+    const checkboxCustomizado = document.createElement("div");
+    checkboxCustomizado.classList.add("checkbox_customizado");
+    itensCheckbox.appendChild(checkboxCustomizado);
+
+    itensCheckbox.addEventListener("click", function(evento) {
+        const checkbox = evento.currentTarget.querySelector(".input_checkbox");
+        const checkboxCustomizado = evento.currentTarget.querySelector(".checkbox_customizado");
+        const comprasTitulo = evento.currentTarget.closest("li").querySelector(".itens_compras_titulo");
+        const lista = evento.currentTarget.closest("li");
+        if(checkbox.checked){
+            checkboxCustomizado.classList.add("checked");
+            comprasTitulo.style.textDecoration = "line-through";
+            listaDeCompras.removeChild(lista);
+            listaComprados.appendChild(lista);
+        }
+        else{
+            checkboxCustomizado.classlist.remove("checked");
+            comprasTitulo.style.textDecoration = "none";
+            listaComprados.removeChild(lista); // Remove da lista comprada
+            listaDeCompras.appendChild(lista); 
+        }
+    })
 
     const comprasTitulo = document.createElement("h3");
     comprasTitulo.classList.add("itens_compras_titulo");
-    comprasTitulo.appendChild(listaComprasConteudo);
+    comprasTitulo.innerText = item; //qual é o value?
+    comprasAdicionadas.appendChild(comprasTitulo); //listaComprasConteudo
 
     const edicao = document.createElement("div");
     edicao.classList.add("itens_edicao");
-    edicao.appendChild(listaComprasConteudo);
+    listaComprasConteudo.appendChild(edicao);
 
-    const edicaoIMG = document.createElement("a");
-    edicaoIMG.classList.add("itens_edicao_img");
-    edicaoIMG.appendChild(edicao);
+    const imgRemover = document.createElement("a"); //botoes 
+    imgRemover.href = "#"
+    imgRemover.innerHTML = `<img src="assets/Excluir.svg" alt="Remover">`;
+    imgRemover.addEventListener("click", function () {
+        lista.remove(); // Remove o item da lista
+    });
+    edicao.appendChild(imgRemover);
 
-    const data = document.createElement("p");
+    const imgEditar = document.createElement("a"); //botoes 
+    imgEditar.href = "#";
+    imgEditar.innerHTML = `<img src="assets/Edição.svg" alt="Editar">`;
+    edicao.appendChild(imgEditar);
+
+    const data = document.createElement("p"); //data 
     data.classList.add("itens_texto");
-    data.appendChild(lista);
+    data.innerHTML= `${new Date().toLocaleDateString("pt-BR", {weekday: "long"})}
+                    (${new Date().toLocaleDateString()}) às 
+                     ${new Date().toLocaleTimeString("pt-BR", {hour:"numeric", minute:"numeric"})}`;
+    lista.appendChild(data);
+
+    listaDeCompras.appendChild(lista); 
+    compras.value = "";
 }
-/*document.createElement ("div class= itens_compras_conteudo")
-    document.createElement ("div class= itens_compras_conteudo")
-        document.createElement ("div class=itens_checkbox")
-            <input type="checkbox" class= "input_checkbox" id="meuCheckbox" name="meuCheckbox">
-            <div class="checkbox_customizado checked"></div>
-            </div>
-            <h3 class="itens_compras_titulo">Queijo Minas</h3>
-        </div>
-        <div class="itens_edicao">
-            <a class="itens_edicao_img" href="#"><img src="./assets/Excluir.svg" alt="imagem de lixeira para excluir itens"></a>
-            <a class="itens_edicao_img" href="#"><img src="./assets/Edição.svg" alt="imagem de um lapis para editar itens"></a>
-        </div>
-    </div>
-    <p class="itens_texto">Segunda feira (31/10/2022) às 08:30</p>
-</li>*/
+    // const agora = new Date();
+    // data.innerText = `Adicionado em: ${agora.toLocaleDateString()} às ${agora.toLocaleTimeString()}`;
