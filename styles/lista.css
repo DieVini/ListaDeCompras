@@ -16,6 +16,7 @@
     flex-direction: column;
     gap: 0.5em
 }
+
 .itens_compras_conteudo{
     display: flex;
     flex-direction: row;

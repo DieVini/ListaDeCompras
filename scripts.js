@@ -1,12 +1,13 @@
-//console.log("hello world");3
+import {verificaListaComprados} from "./js/verificaListaComprados.js";
+import { verificaListaVazia } from "./js/verificaListaVazia.js";
+
 const compras = document.getElementById("adicionar_compras"); //input para adicionar as compras.
 const salvar = document.getElementById("adicionar_botao");
 const listaDeCompras = document.getElementById("itens_compras");
 const listaComprados = document.getElementById("itens_comprados")
 let contador = 0;
+
 salvar.addEventListener("click", adicionarItem); //onclick
-
-
 function adicionarItem(evento){
     evento.preventDefault(); //evitar refresh na página quando clicar no botão
     const item = compras.value.trim(); 
@@ -48,7 +49,7 @@ function adicionarItem(evento){
         else{
             checkboxCustomizado.classlist.remove("checked");
             comprasTitulo.style.textDecoration = "none";
-            listaComprados.removeChild(lista); // Remove da lista comprada
+            listaComprados.removeChild(listaComprados); // Remove da lista comprada
             listaDeCompras.appendChild(lista); 
         }
     })
@@ -84,6 +85,8 @@ function adicionarItem(evento){
 
     listaDeCompras.appendChild(lista); 
     compras.value = "";
+    
 }
-    // const agora = new Date();
-    // data.innerText = `Adicionado em: ${agora.toLocaleDateString()} às ${agora.toLocaleTimeString()}`;
+const lista = document.getElementById("itens_comprados"); 
+verificaListaComprados(lista);
+verificaListaVazia(lista);

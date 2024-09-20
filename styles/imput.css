@@ -1,9 +1,9 @@
 main{
     background-color: var(--cinza-claro);
     border-radius: 1em;
-    margin: 1.5em;
+    margin: 1.5em;    
 }
-.adicionar{ /*tag section para adicionar mais intens na lista*/
+.adicionar{ /*tag section para adicionar mais itens na lista*/
     display: flex;
     flex-direction: column;
     align-items: center;
