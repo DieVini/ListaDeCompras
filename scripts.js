@@ -1,5 +1,7 @@
+import{gerarDiaDaSemana} from "./js/gerarDiaDaSemana.js";
 import {verificaListaComprados} from "./js/verificaListaComprados.js";
 import { verificaListaVazia } from "./js/verificaListaVazia.js";
+import { editarItem } from "./js/novoItem.js";
 
 const compras = document.getElementById("adicionar_compras"); //input para adicionar as compras.
 const salvar = document.getElementById("adicionar_botao");
@@ -43,15 +45,14 @@ function adicionarItem(evento){
         if(checkbox.checked){
             checkboxCustomizado.classList.add("checked");
             comprasTitulo.style.textDecoration = "line-through";
-            listaDeCompras.removeChild(lista);
             listaComprados.appendChild(lista);
         }
         else{
-            checkboxCustomizado.classlist.remove("checked");
+            checkboxCustomizado.classList.remove("checked");
             comprasTitulo.style.textDecoration = "none";
-            listaComprados.removeChild(listaComprados); // Remove da lista comprada
-            listaDeCompras.appendChild(lista); 
+            listaDeCompras.appendChild(lista); // Mover o item
         }
+        verificaListaComprados(listaComprados);
     })
 
     const comprasTitulo = document.createElement("h3");
@@ -67,26 +68,31 @@ function adicionarItem(evento){
     imgRemover.href = "#"
     imgRemover.innerHTML = `<img src="assets/Excluir.svg" alt="Remover">`;
     imgRemover.addEventListener("click", function () {
-        lista.remove(); // Remove o item da lista
+        const confirmacao = confirm("você tem certeza que deseja remover este item?");
+        if (confirmacao){
+            lista.remove(); // Remove o item da lista
+            verificaListaComprados(listaComprados);
+            verificaListaVazia(listaDeCompras);
+        }
     });
     edicao.appendChild(imgRemover);
 
     const imgEditar = document.createElement("a"); //botoes 
     imgEditar.href = "#";
     imgEditar.innerHTML = `<img src="assets/Edição.svg" alt="Editar">`;
+    imgEditar.addEventListener("click", function () {
+        editarItem(lista); // Chama a função de editar passando o item da lista
+    });
     edicao.appendChild(imgEditar);
 
     const data = document.createElement("p"); //data 
     data.classList.add("itens_texto");
-    data.innerHTML= `${new Date().toLocaleDateString("pt-BR", {weekday: "long"})}
-                    (${new Date().toLocaleDateString()}) às 
-                     ${new Date().toLocaleTimeString("pt-BR", {hour:"numeric", minute:"numeric"})}`;
+    data.innerHTML= gerarDiaDaSemana();
     lista.appendChild(data);
 
     listaDeCompras.appendChild(lista); 
     compras.value = "";
-    
+    //verificar a visibilade da lista e das mensagens
+    verificaListaComprados(listaComprados);
+    verificaListaVazia(listaDeCompras);    
 }
-const lista = document.getElementById("itens_comprados"); 
-verificaListaComprados(lista);
-verificaListaVazia(lista);
